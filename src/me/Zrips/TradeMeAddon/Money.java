@@ -220,12 +220,12 @@ public class Money implements TradeModeInterface {
     private boolean check(Player p1, Player p2, Double offer1, Double offer2) {
 	if (plugin.getEconomy().enabled()) {
 	    Double balance = plugin.getEconomy().getBalance(p1);
-//	    if (balance < 0 && balance + offer2 < 0 && !plugin.EssPresent) {
-//		p1.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanYou", "[playername]", p2.getName()));
-//		p2.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanTarget", "[playername]", p1.getName(), "[amount]",
-//		    plugin.getUtil().TrA(-balance)));
-//		return false;
-//	    }
+	    if (balance < 0 && balance + offer2 < 0 && !plugin.EssPresent) {
+		p1.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanYou", "[playername]", p2.getName()));
+		p2.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanTarget", "[playername]", p1.getName(), "[amount]",
+		    plugin.getUtil().TrA(-balance)));
+		return false;
+	    }
 	    if (balance < offer1) {
 		p1.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "Error", "[playername]", p1.getName()));
 		p2.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "Error", "[playername]", p1.getName()));
@@ -233,12 +233,12 @@ public class Money implements TradeModeInterface {
 	    }
 
 	    balance = plugin.getEconomy().getBalance(p2);
-//	    if (balance < 0 && balance + offer1 < 0 && !plugin.EssPresent) {
-//		p1.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanYou", "[playername]", p1.getName()));
-//		p2.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanTarget", "[playername]", p2.getName(), "[amount]",
-//		    plugin.getUtil().TrA(-balance)));
-//		return false;
-//	    }
+	    if (balance < 0 && balance + offer1 < 0 && !plugin.EssPresent) {
+		p1.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanYou", "[playername]", p1.getName()));
+		p2.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "InLoanTarget", "[playername]", p2.getName(), "[amount]",
+		    plugin.getUtil().TrA(-balance)));
+		return false;
+	    }
 	    if (balance < offer2) {
 		p1.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "Error", "[playername]", p2.getName()));
 		p2.sendMessage(plugin.getMsg(LC.info_prefix) + plugin.getMessage(at, "Error", "[playername]", p2.getName()));
